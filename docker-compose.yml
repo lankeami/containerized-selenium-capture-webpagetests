@@ -8,6 +8,6 @@ services:
     environment:
       ENV: ${ENV}
     ports:
-      - '8080:8080'
-    command: '/bin/bash'
+      - '8080:3000'
+    command: 'cd /var/speedy/app/speedy && bundle install && /bin/bash'
     tty: true

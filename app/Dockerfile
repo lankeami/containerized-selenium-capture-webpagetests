@@ -21,5 +21,5 @@ RUN apk --update add xvfb \
                      vim
 
 RUN rm -f /var/cache/apk/*
-RUN gem install --no-rdoc --no-ri bundler watir nokogiri rails
+RUN gem install --no-rdoc --no-ri bundler watir nokogiri rails tzinfo-data
 
