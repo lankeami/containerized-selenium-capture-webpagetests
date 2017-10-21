@@ -1,13 +1,22 @@
 version: '2'
 
 services:
-  speedy:
+  cli:
     build: ./app
     volumes:
       - .:/var/speedy
     environment:
-      ENV: ${ENV}
-    ports:
-      - '8080:3000'
+      RAILS_ENV: ${RAILS_ENV}
     command: '/bin/bash'
     tty: true
+
+  web:
+    build: ./app
+    volumes:
+      - .:/var/speedy
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+    ports:
+      - '8080:3000'
+    tty: true
+    command: bash -c "bundle install && bundle exec rails s"

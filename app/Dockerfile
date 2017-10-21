@@ -22,4 +22,5 @@ RUN apk --update add xvfb \
 
 RUN rm -f /var/cache/apk/*
 RUN gem install --no-rdoc --no-ri bundler watir nokogiri rails tzinfo-data
+WORKDIR /var/speedy/app/speedy
 
