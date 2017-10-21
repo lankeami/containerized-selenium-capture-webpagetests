@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021115904) do
+ActiveRecord::Schema.define(version: 20171021122711) do
 
   create_table "urls", force: :cascade do |t|
     t.string "title"
     t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "wpts", force: :cascade do |t|
+    t.integer "url_id"
+    t.decimal "load_t"
+    t.decimal "first_byte_t"
+    t.decimal "dom_interactive_t"
+    t.decimal "document_complete_t"
+    t.integer "request_count"
+    t.decimal "speed_index"
+    t.text "ref"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["url_id"], name: "index_wpts_on_url_id"
   end
 
 end

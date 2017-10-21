@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wpts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Load t</th>
+      <th>First byte t</th>
+      <th>Dom interactive t</th>
+      <th>Document complete t</th>
+      <th>Request count</th>
+      <th>Speed index</th>
+      <th>Ref</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wpts.each do |wpt| %>
+      <tr>
+        <td><%= wpt.url %></td>
+        <td><%= wpt.load_t %></td>
+        <td><%= wpt.first_byte_t %></td>
+        <td><%= wpt.dom_interactive_t %></td>
+        <td><%= wpt.document_complete_t %></td>
+        <td><%= wpt.request_count %></td>
+        <td><%= wpt.speed_index %></td>
+        <td><%= wpt.ref %></td>
+        <td><%= link_to 'Show', wpt %></td>
+        <td><%= link_to 'Edit', edit_wpt_path(wpt) %></td>
+        <td><%= link_to 'Destroy', wpt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wpt', new_wpt_path %>

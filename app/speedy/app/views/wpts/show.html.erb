@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @wpt.url %>
+</p>
+
+<p>
+  <strong>Load t:</strong>
+  <%= @wpt.load_t %>
+</p>
+
+<p>
+  <strong>First byte t:</strong>
+  <%= @wpt.first_byte_t %>
+</p>
+
+<p>
+  <strong>Dom interactive t:</strong>
+  <%= @wpt.dom_interactive_t %>
+</p>
+
+<p>
+  <strong>Document complete t:</strong>
+  <%= @wpt.document_complete_t %>
+</p>
+
+<p>
+  <strong>Request count:</strong>
+  <%= @wpt.request_count %>
+</p>
+
+<p>
+  <strong>Speed index:</strong>
+  <%= @wpt.speed_index %>
+</p>
+
+<p>
+  <strong>Ref:</strong>
+  <%= @wpt.ref %>
+</p>
+
+<%= link_to 'Edit', edit_wpt_path(@wpt) %> |
+<%= link_to 'Back', wpts_path %>

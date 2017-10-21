@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: one
+  load_t: 9.99
+  first_byte_t: 9.99
+  dom_interactive_t: 9.99
+  document_complete_t: 9.99
+  request_count: 1
+  speed_index: 9.99
+  ref: MyText
+
+two:
+  url: two
+  load_t: 9.99
+  first_byte_t: 9.99
+  dom_interactive_t: 9.99
+  document_complete_t: 9.99
+  request_count: 1
+  speed_index: 9.99
+  ref: MyText

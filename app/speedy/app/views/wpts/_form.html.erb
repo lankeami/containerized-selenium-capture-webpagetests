@@ -1,0 +1,57 @@
+<%= form_with(model: wpt, local: true) do |form| %>
+  <% if wpt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(wpt.errors.count, "error") %> prohibited this wpt from being saved:</h2>
+
+      <ul>
+      <% wpt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :url_id %>
+    <%= form.text_field :url_id, id: :wpt_url_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :load_t %>
+    <%= form.text_field :load_t, id: :wpt_load_t %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_byte_t %>
+    <%= form.text_field :first_byte_t, id: :wpt_first_byte_t %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dom_interactive_t %>
+    <%= form.text_field :dom_interactive_t, id: :wpt_dom_interactive_t %>
+  </div>
+
+  <div class="field">
+    <%= form.label :document_complete_t %>
+    <%= form.text_field :document_complete_t, id: :wpt_document_complete_t %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request_count %>
+    <%= form.number_field :request_count, id: :wpt_request_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :speed_index %>
+    <%= form.text_field :speed_index, id: :wpt_speed_index %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ref %>
+    <%= form.text_area :ref, id: :wpt_ref %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
