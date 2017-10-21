@@ -4,7 +4,7 @@ services:
   speedy:
     build: ./app
     volumes:
-      - .:/var/easyposter
+      - .:/var/speedy
     environment:
       ENV: ${ENV}
     ports:
