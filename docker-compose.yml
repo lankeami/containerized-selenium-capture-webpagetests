@@ -9,6 +9,9 @@ services:
       RAILS_ENV: ${RAILS_ENV}
     command: '/bin/bash'
     tty: true
+    ports:
+      - '8080:3000'
+      - '4444:4444'
 
   web:
     build: ./app
@@ -17,6 +20,7 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
     ports:
-      - '8080:3000'
+      - '9080:3000'
+    command: '/opt/gin/entry_point.sh'
     tty: true
-    command: bash -c "bundle install && bundle exec rails s"
+    command: "bundle install && bundle exec rails s"

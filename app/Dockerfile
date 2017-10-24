@@ -1,26 +1,31 @@
-FROM ruby:2.4.2-alpine3.6
-MAINTAINER Jay Chinthrajah <jay.chinthrajah@mmlafleur.com>
+FROM selenium/node-chrome:3.6.0-copper
 
-RUN apk --update add xvfb \
-                     dbus \
-                     ttf-freefont \
-                     firefox-esr \
-                     udev \
-                     chromium \
-                     ca-certificates \
-                     gcc \
-                     libc-dev \
-                     make \
-                     libffi-dev \
-                     libxml2-dev \
-                     bash \
-                     python \
-                     nodejs \
-                     sqlite \
-                     sqlite-dev \
-                     vim
+USER seluser
 
-RUN rm -f /var/cache/apk/*
-RUN gem install --no-rdoc --no-ri bundler watir nokogiri rails tzinfo-data
+#====================================
+# Scripts to run Selenium Standalone
+#====================================
+COPY entry_point.sh /opt/bin/entry_point.sh
+#RUN chmod 777 /opt/bin/entry_point.sh
+
+USER root
+
+RUN echo "/opt/bin/entry_point.sh" >> /etc/init.d/superscript 
+RUN apt-get update && apt-get install -y \ 
+                libc-dev \
+                bash \
+                python \
+                sqlite \
+                ruby \
+                ruby-dev \
+                vim
+
+RUN sudo apt-get install -y ruby`ruby -e 'puts RUBY_VERSION[/\d+\.\d+/]'`-dev
+RUN sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+RUN sudo apt-get install -y libsqlite3-0 libsqlite3-dev
+RUN sudo apt-get install -y nodejs
+
+RUN gem install --no-rdoc --no-ri bundler rails watir nokogiri tzinfo-data
+
 WORKDIR /var/speedy/app/speedy
-
+EXPOSE 4444
