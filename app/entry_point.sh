@@ -4,8 +4,6 @@
 
 source /opt/bin/functions.sh
 
-bundle install
-
 export GEOMETRY="$SCREEN_WIDTH""x""$SCREEN_HEIGHT""x""$SCREEN_DEPTH"
 
 function shutdown {
@@ -29,4 +27,3 @@ NODE_PID=$!
 trap shutdown SIGTERM SIGINT
 #wait $NODE_PID
 
-rails s
