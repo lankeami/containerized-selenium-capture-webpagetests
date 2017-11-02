@@ -29,7 +29,7 @@ class WebPageTestJob < ApplicationJob
   def perform(*args)
     # Do something later
     url = args[0]
-    puts "url: #{url.class}"
+    puts "url: #{url.title}"
     raise(ArgumentError, "Invalid URL") unless url.is_a? Url
 
     puts "Initiating a chrome browser"
