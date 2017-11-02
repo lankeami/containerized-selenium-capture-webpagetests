@@ -10,7 +10,7 @@ services:
     command: '/bin/bash'
     tty: true
     ports:
-      - '8080:3000'
+      - '9080:3000'
       - '4444:4444'
 
   web:
@@ -20,7 +20,27 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
     ports:
-      - '9080:3000'
-    command: '/opt/gin/entry_point.sh'
+      - '8080:3000'
+    command: '/opt/bin/rails_s.sh'
     tty: true
-    command: "bundle install && bundle exec rails s"
+
+  sqlite3-dump:
+    build: ./app
+    volumes:
+      - .:/var/speedy
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+    command: '/opt/bin/sqlite_dump.sh'
+    tty: true
+
+  scrape:
+    build: ./app
+    volumes:
+      - .:/var/speedy
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+    command: '/opt/bin/rake_get_all_tests.sh'
+    tty: true
+
+
+
