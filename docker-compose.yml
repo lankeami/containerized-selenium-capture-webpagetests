@@ -9,9 +9,9 @@ services:
       RAILS_ENV: ${RAILS_ENV}
     command: '/bin/bash'
     tty: true
-    ports:
-      - '9080:3000'
-      - '4444:4444'
+#    ports:
+#      - '9080:3000'
+#      - '4444:4444'
 
   web:
     build: ./app
