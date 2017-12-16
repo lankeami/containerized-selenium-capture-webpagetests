@@ -3,6 +3,7 @@ namespace :web_page_test do
   task get_all: :environment do
     Url.all.each do |u|
       begin
+        puts Time.now
         WebPageTestJob.new.perform(u)
       rescue
       end
