@@ -11,6 +11,7 @@ ADD rails_s.sh /opt/bin/rails_s.sh
 ADD rake_get_all_tests.sh /opt/bin/rake_get_all_tests.sh
 
 USER root
+ADD bash_aliases /root/.bash_aliases
 RUN echo "/opt/bin/entry_point.sh" >> /etc/init.d/superscript 
 RUN apt-get update && apt-get install -y \ 
                 libc-dev \
@@ -30,4 +31,3 @@ RUN gem install --no-rdoc --no-ri bundler rails watir nokogiri tzinfo-data
 
 WORKDIR /var/speedy/app/speedy
 EXPOSE 4444
-#ENTRYPOINT ["/opt/bin/entry_point.sh"]

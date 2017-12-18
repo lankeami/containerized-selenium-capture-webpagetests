@@ -1,0 +1,6 @@
+echo "loading bash_aliases"
+if pidof -x "xvfb-run" >/dev/null; then
+  echo "selenium already running"
+else
+  /opt/bin/entry_point.sh &
+fi
