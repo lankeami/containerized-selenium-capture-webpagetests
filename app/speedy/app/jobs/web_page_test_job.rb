@@ -55,6 +55,7 @@ class WebPageTestJob < ApplicationJob
         }
         begin
           puts "saving waterfall view ##{i}"
+          puts "#{test_result_url}#{i}/details/#waterfall_view_step1"
           wpt_data = {}
           wpt_data["url_id"] = url.id
           wpt_data["load_t"] = (browser.td(id: "LoadTime").text.chomp('s') rescue nil)
