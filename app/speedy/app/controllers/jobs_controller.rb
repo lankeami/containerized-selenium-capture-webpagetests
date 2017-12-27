@@ -5,6 +5,6 @@ class JobsController < ApplicationController
   end
 
   def scraper
-    ScraperJob.new.perform
+    ScraperJob.perform_async
   end
 end

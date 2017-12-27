@@ -1,5 +1,6 @@
-class ScraperJob < ApplicationJob
-  queue_as :default
+class ScraperJob
+  include SuckerPunch::Job
+  #queue_as :default
 
   def perform(*args)
     Url.all.each do |u|
