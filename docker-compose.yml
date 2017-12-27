@@ -17,7 +17,7 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
     ports:
-      - '8080:3000'
+      - '8180:3000'
     command: '/opt/bin/rails_s.sh'
     tty: true
 
