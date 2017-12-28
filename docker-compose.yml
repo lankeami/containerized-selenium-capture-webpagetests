@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  cli:
+  speedy_cli:
     build: ./app
     volumes:
       - .:/var/speedy
@@ -10,7 +10,7 @@ services:
     command: '/bin/bash'
     tty: true
 
-  web:
+  speedy_web:
     build: ./app
     volumes:
       - .:/var/speedy
@@ -21,7 +21,7 @@ services:
     command: '/opt/bin/rails_s.sh'
     tty: true
 
-  sqlite3-dump:
+  speedy_sqlite3-dump:
     build: ./app
     volumes:
       - .:/var/speedy
@@ -30,7 +30,7 @@ services:
     command: '/opt/bin/sqlite_dump.sh'
     tty: true
 
-  scrape:
+  speedy_scrape:
     build: ./app
     volumes:
       - .:/var/speedy
