@@ -26,6 +26,16 @@ class WebPageTestJob < ApplicationJob
     end while wait_loop
   end
 
+  def _client
+    "Chrome"
+  end
+
+  def _initiate_test(browser, url)
+    puts "initiating test for '#{url.url}' on '#{_client}'"
+    browser.text_field(id: 'url').set url.url
+    browser.select_list(id: 'browser').select(_client)
+  end
+
   def perform(*args)
     # Do something later
     url = args[0]
@@ -36,8 +46,7 @@ class WebPageTestJob < ApplicationJob
     browser = Watir::Browser.new :chrome
     puts "loading webpagetest.org"
     browser.goto "https://www.webpagetest.org/"
-    puts "initiating test for '#{url.url}'"
-    browser.text_field(id: 'url').set url.url
+    _initiate_test(browser, url)
     puts "submitting test"
     browser.button(type: 'submit').click
     puts "waiting for test to complete"
