@@ -59,3 +59,4 @@ end
 gem 'tzinfo-data'
 
 gem 'sucker_punch', '~> 2.0'
+gem 'curb', '~> 0.9.4'

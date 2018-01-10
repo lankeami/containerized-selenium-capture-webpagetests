@@ -15,6 +15,7 @@ ADD bash_aliases /root/.bash_aliases
 RUN echo "/opt/bin/entry_point.sh" >> /etc/init.d/superscript 
 RUN apt-get update && apt-get install -y \ 
                 libc-dev \
+                libcurl3 libcurl3-gnutls libcurl4-openssl-dev \
                 bash \
                 python \
                 sqlite \

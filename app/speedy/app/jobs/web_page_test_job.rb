@@ -34,8 +34,8 @@ class WebPageTestJob < ApplicationJob
 
     puts "Initiating a chrome browser"
     browser = Watir::Browser.new :chrome
-    puts "loading webpagetest.org"    
-    browser.goto "https://www.webpagetest.org/" 
+    puts "loading webpagetest.org"
+    browser.goto "https://www.webpagetest.org/"
     puts "initiating test for '#{url.url}'"
     browser.text_field(id: 'url').set url.url
     puts "submitting test"
@@ -43,7 +43,7 @@ class WebPageTestJob < ApplicationJob
     puts "waiting for test to complete"
 
     _load_and_wait(browser, nil) {
-      browser.button(type: 'submit').value.include? "Re-run the test" 
+      browser.button(type: 'submit').value.include? "Re-run the test"
     }
 
     puts "test completed, iterating through waterfalls"
