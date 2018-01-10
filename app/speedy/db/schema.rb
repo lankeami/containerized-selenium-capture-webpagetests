@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021122711) do
+ActiveRecord::Schema.define(version: 20180110223951) do
 
   create_table "urls", force: :cascade do |t|
     t.string "title"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20171021122711) do
     t.text "ref"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "client"
     t.index ["url_id"], name: "index_wpts_on_url_id"
   end
 
