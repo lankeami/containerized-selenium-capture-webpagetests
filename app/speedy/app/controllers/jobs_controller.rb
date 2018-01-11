@@ -7,4 +7,8 @@ class JobsController < ApplicationController
   def scraper
     ScraperJob.perform_async
   end
+
+  def klass_async
+    params[:klass].constantize.perform_async
+  end
 end
