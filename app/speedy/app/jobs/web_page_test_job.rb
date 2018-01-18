@@ -13,7 +13,6 @@ class WebPageTestJob < ApplicationJob
     wait_loop = true
     begin
       begin
-        #Watir::Wait.until{browser.execute_script('return jQuery.active == 0')}
         Watir::Wait.until{block.call}
         wait_loop = false
       rescue Watir::Wait::TimeoutError
@@ -73,11 +72,12 @@ class WebPageTestJob < ApplicationJob
           wpt_data["speed_index"] = (browser.td(id: "SpeedIndex").text.chomp('s') rescue nil)
           wpt_data["ref"] = browser.url
           wpt_data["document_complete_t"] = (browser.td(id: "DocComplete").text.chomp('s') rescue nil)
-          wpt_data["dom_interactive_t"] = (browser.table(id: "tableW3CTiming").tr(index: 1).td(index: 2).text.chomp('s'))
+          wpt_data["dom_interactive_t"] = ((browser.table(id: "tableW3CTiming").tr(index: 1).td(index: 2).text.chomp('s')) rescue nil)
           wpt_data["client"] = _client
           puts "Data: #{wpt_data}"
           _create_wpts wpt_data
-        rescue
+        rescue Exception => e
+          puts "error: #{e.message}"
         end
       end
     end
